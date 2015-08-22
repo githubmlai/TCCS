@@ -1,0 +1,16 @@
+1.7-svn	sfmpirtmop	Rickett2003/PaperResults/test:	mlai@begws92	Fri Feb 20 18:05:39 2015
+
+	d2=12.5
+	n2=398
+	o1=0
+	d3=325
+	n3=1
+	o2=0
+	label1="Time"
+	data_format="native_complex"
+	o3=2500
+	esize=8
+	in="/home/mlai/datapath/Rickett2003/PaperResults/test/shots.rsf@"
+	unit1="s"
+	d1=0.001
+	n1=3001

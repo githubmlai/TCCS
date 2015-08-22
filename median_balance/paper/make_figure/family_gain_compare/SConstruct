@@ -1,0 +1,30 @@
+from rsf.proj import *
+import os
+import sys
+sys.path.append("/home/mlai/geo/mlai/Rickett2003/PaperResults/Madagascar/utility")
+
+from subprocess import call
+import subprocess
+import debug_module
+debug_module.doDebugOrNot(ARGUMENTS)
+
+
+
+first_rsf = 'original_data.rsf'
+first_rsf_gained_one_vpl = os.path.splitext( os.path.basename(first_rsf))[0] +  '_gain_one.vpl'
+first_rsf_gained_two_vpl = os.path.splitext( os.path.basename(first_rsf))[0] +  '_gain_two.vpl'
+side_by_side_vpl = os.path.splitext( os.path.basename(first_rsf))[0] + '_sidebyside' + '.vpl'
+
+
+gain_one = 2
+gain_two = 2.4828  #found through median balancing
+
+Plot(first_rsf_gained_one_vpl,first_rsf,
+     'pow pow1=%g | grey title="(a) Time Power Correction of %g" ' % (gain_one,gain_one))
+
+Plot(first_rsf_gained_two_vpl,first_rsf,
+     'pow pow1=%g | grey title="(b) Time Power Correction of %g" '% (gain_two,gain_two))
+ 
+Result(side_by_side_vpl,first_rsf_gained_one_vpl + ' ' + first_rsf_gained_two_vpl,'SideBySideAniso')
+
+End()

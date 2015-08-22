@@ -1,0 +1,323 @@
+# dds_history= /data/gsul6/data1/zjad49/Figs/Sammig/USP/mod2_vel_12.5m_pad.usp.nh
+in=/data/gsul6/data1/zjad49/Figs/Sammig/USP/mod2_vel_12.5m_pad.usp.nh
+# format= usp
+# dds_history_end= /data/gsul6/data1/zjad49/Figs/Sammig/USP/mod2_vel_12.5m_pad.usp.nh
+# dds_history= tmpDict_in1:
+# DDS_SENTRY= $Revision: 3.1 $ $Date: 1997/06/04 16:38:22 $
+# ********************************************
+# ******************* TITLE ******************
+# ********************************************
+# cmd_title=  "bridge, convert seismic data"
+# cmd_name= /tstapps/dist/SunOS/5/mbs/prod/sun4u/bridge_r3
+# cmd_user= zjad49
+# cmd_date= Mon Jan 25 19:32:50 1999
+# cmd_host= ttsjad49
+# cmd_cwd= ./data
+# cmd_pid= 4665
+# alias:sep_in= in
+# $size=
+# $origin=
+# $delta=
+# $units=
+# dds_history= par:
+# cmd_args= 
+# in=/data/gsul6/data1/zjad49/Figs/Sammig/USP/mod2_vel_12.5m_pad.usp.nh
+# in_format=usp
+# out_format=fcube
+# out=s.velmodel.d
+# dds_history_end= par:
+# $format= in_format
+# 
+# fmt:GREEN_PREFIX= typedef integer4 GREEN_PREFIX;
+# 
+# fmt:USP_SHORT= typedef integer2 USP_SHORT;
+# 
+# fmt:USP_INT= typedef integer4 USP_INT;
+# 
+# fmt:USP_CRAY_GAP= typedef void USP_CRAY_GAP;
+# 
+# fmt:SAMPLE_TYPE= typedef float4 SAMPLE_TYPE;
+# 
+# fmt:USP_ADJUST= typedef enum4 {USP_LINE_PAD \= 0, USP_TRACE_PAD
+#        \= 0, USP_HLH_SIZE \= 0} USP_ADJUST;
+# 
+# fmt:USP_TRACE= typedef align(1) struct {GREEN_PREFIX green_prefix;
+#    USP_SHORT SGRNum, SGRAmp;
+#    USP_INT SGRDat;
+#    USP_CRAY_GAP SGRDat_GAP;
+#    USP_SHORT FlReFN, FlStNm, PREPIn, InStUn, InStAp, PREPRc, RcStUn,
+#       RcStAp, ToStAp, ToTmAA, ToStUn, ToTmAU, SrComp, RcComp,
+#       SrStat, RcStat, TrHdID, SrRcAz;
+#    USP_INT SrPtXC;
+#    USP_CRAY_GAP SrPtXC_GAP;
+#    USP_INT SrPtYC;
+#    USP_CRAY_GAP SrPtYC_GAP;
+#    USP_INT RcPtXC;
+#    USP_CRAY_GAP RcPtXC_GAP;
+#    USP_INT RcPtYC;
+#    USP_CRAY_GAP RcPtYC_GAP;
+#    USP_INT SrRcMX;
+#    USP_CRAY_GAP SrRcMX_GAP;
+#    USP_INT SrRcMY;
+#    USP_CRAY_GAP SrRcMY_GAP;
+#    USP_INT CDPBCX;
+#    USP_CRAY_GAP CDPBCX_GAP;
+#    USP_INT CDPBCY;
+#    USP_CRAY_GAP CDPBCY_GAP;
+#    USP_INT InTrCn;
+#    USP_CRAY_GAP InTrCn_GAP;
+#    USP_SHORT FlDtEl, MulSkw, PerSPO, InlSPO, TiLiIx[6];
+#    union {USP_SHORT TVPair[40];
+#       struct {USP_SHORT TVPT01, TVPV01, TVPT02, TVPV02, TVPT03,
+#             TVPV03, TVPT04, TVPV04, TVPT05, TVPV05, TVPT06, TVPV06,
+#             TVPT07, TVPV07, TVPT08, TVPV08, TVPT09, TVPV09, TVPT10,
+#             TVPV10, TVPT11, TVPV11, TVPT12, TVPV12, TVPT13, TVPV13,
+#             TVPT14, TVPV14, TVPT15, TVPV15, TVPT16, TVPV16, TVPT17,
+#             TVPV17, TVPT18, TVPV18, TVPT19, TVPV19, TVPT20, TVPV20;} 
+#          _TVP;
+#       struct {float4 Horz01, Horz02, Horz03, Horz04, Horz05, Horz06,
+#             Horz07, Horz08;
+#          USP_SHORT crapola[2], AvDaSt, TrSrSt;} _Horz01;} _TVPair;
+#    USP_SHORT RedVel, RedTim, VPick1, VPick2, LRcCDP, CabDep, WDepDP,
+#       DPOPer, ShtDep, UphlTm;
+#    USP_INT DpPtLt;
+#    USP_CRAY_GAP DpPtLt_GAP;
+#    USP_INT DpPtLn;
+#    USP_CRAY_GAP DpPtLn_GAP;
+#    USP_SHORT FoldNm, RecNum, TrcNum, SrcPnt, SrcLoc, PrRcNm, PrTrNm,
+#       SrPtEl;
+#    USP_INT SrPtLt;
+#    USP_CRAY_GAP SrPtLt_GAP;
+#    USP_INT SrPtLn;
+#    USP_CRAY_GAP SrPtLn_GAP;
+#    USP_SHORT DstUsg, RecInd, DstSgn, GrpElv, LinInd, DphInd, DePtEl,
+#       RfSrEl, StaCor;
+#    USP_SHORT DatShf, SoPtNm;
+#    ascii1 SoPtAl, SoPtBi;
+#    SAMPLE_TYPE Samples[axis_size(1)];
+#    unsigned1 usp_trace_pad[USP_TRACE_PAD];} USP_TRACE;
+# 
+# fmt:USP_CHAR= typedef ascii1 USP_CHAR;
+# 
+# fmt:USP_FLOAT= typedef float4 USP_FLOAT;
+# 
+# fmt:USP_LINE= typedef align(1) struct {GREEN_PREFIX
+#       line_green_prefix;
+#    USP_CHAR EqpCod, CrwNam[6], DatTyp, DgTrkS[2], PrcNam[10],
+#       PrcNam_GAP[4], PrcDat[8], OACLin[8], JobNum[8];
+#    USP_INT NumTrc, NumRec, SmpInt, NumSmp;
+#    USP_SHORT Format, IndAdj, OpGrFl;
+#    USP_CHAR OpGrFl_GAP[2], SrtTyp[2];
+#    USP_SHORT CDPFld;
+#    USP_CHAR GrpInt[4];
+#    union {USP_INT DtInFl, Dy1000;} _DtInFl;
+#    USP_SHORT MxSPEl, MnSPEl, MxRSEL, MnRSEL, MxGrEl, MnGrEl, MxTrSt,
+#       MnTrSt;
+#    USP_CHAR LinDir[4];
+#    USP_INT AERcPr;
+#    USP_SHORT OrNTRC, OrNREC;
+#    USP_FLOAT MutVel;
+#    USP_SHORT ZDMuTm, IntInc;
+#    union {USP_INT WatVel, RefVel;} _WatVel;
+#    USP_SHORT MxShDp, MnShDp, MxUHTm, MnUHTm, MxTrOf, MnTrOf;
+#    union {USP_SHORT RATTrc, AnglSt;} _RATTrc;
+#    union {USP_SHORT RATFld, AngInc;} _RATFld;
+#    USP_SHORT UnitFl, FrstSP, DpN1SP, NmDpIn, StWdFl, DptInt;
+#    union {USP_INT TmMsSl, Dx1000;} _TmMsSl;
+#    union {USP_INT TmSlIn, Dz1000;} _TmSlIn;
+#    USP_FLOAT TmMsFS;
+#    USP_INT NTrLnS;
+#    USP_SHORT PltDir, LgRfEl, MnLnIn, MxLnIn, MnDpIn, MxDpIn;
+#    USP_FLOAT ILClIn, CLClIn;
+#    USP_SHORT ReSpFm, VlFnRF;
+#    USP_CHAR OACUsr[4], LinNam[8];
+#    USP_SHORT MutFlg;
+#    USP_CHAR SPBias[2];
+#    USP_SHORT SpBiFl;
+#    USP_CHAR APIWNo[12], APIWNo_GAP[2];
+#    USP_FLOAT NmSpMi;
+#    USP_CHAR NmSpMi_GAP[368], NmSpMi_GAP2[4];
+#    union {USP_SHORT VelFun[200];
+#       struct {USP_SHORT MinVel, MaxVel, Nx_Pad, Nx_Win, Nx_Rec,
+#             NxLine, Nx_Trc, Ny_Pad, Ny_Win, Ny_Rec, NyLine, Ny_Trc,
+#             MCTrSp, NumCmp, MCLE01, MCLE02, MCLE03, MCLE04, MCLE05,
+#             MCLE06, MCLE07, MCLE08, MCLE09, MCLE10, MCLE11, MCLE12,
+#             MCLE13, MCLE14, MCLE15, MCLE16, MC_GAP[10], OrNSMP;
+#          align(2) float4 AziIln, AziXln, HrzNul;
+#          USP_SHORT xT_Unit;
+#          float4 UnitSc, SmpFlt, MaxAmp, AvgAmp, RmsAmp;} _MinVel;} 
+#       _VelFun;
+#    USP_SHORT HlhEnt, HlhByt;
+#    unsigned1 HlhBuf[USP_HLH_SIZE];
+#    unsigned1 usp_line_pad[USP_LINE_PAD];} USP_LINE;
+# 
+# fmt:PREAMBLE= typedef USP_LINE PREAMBLE;
+# 
+# fmt:SEQUENCE= typedef USP_TRACE SEQUENCE;
+# 
+# fmt:usp=   typedef USP_LINE PREAMBLE;
+#    typedef USP_TRACE SEQUENCE;
+# alias:fmt:USP_TRACE_PAD= fmt:USP_ADJUST
+# alias:fmt:USP_HLH_SIZE= fmt:USP_ADJUST
+# alias:fmt:USP_LINE_PAD= fmt:USP_ADJUST
+# usp_EqpCod= ""
+# usp_CrwNam= ""
+# usp_DatTyp= ""
+# usp_DgTrkS= ""
+# usp_PrcNam= ""
+# usp_PrcDat= " 1/25/99"
+# usp_OACLin= ""
+# usp_JobNum= " "
+# usp_NumTrc= 1761
+# usp_NumRec= 1
+# usp_SmpInt= 1
+# usp_NumSmp= 321
+# usp_Format= 3
+# usp_SrtTyp= ""
+# usp_GrpInt= ""
+# usp_LinDir= ""
+# usp_TmMsSl= 12500
+# usp_Dx1000= 12500
+# usp_TmSlIn= 12500
+# usp_Dz1000= 12500
+# usp_OACUsr= ""
+# usp_LinNam= ""
+# usp_SPBias= ""
+# usp_APIWNo= ""
+# usp_UnitSc= 0.001
+# usp_VelFun=
+#  5000 5000 0 0 0 0 0 0 0 0
+#  0 0 0 0 0 0 0 0 0 0
+#  0 0 0 0 0 0 0 0 0 0
+#  0 0 0 0 0 0 0 0 0 0
+#  0 0 0 0 0 0 0 0 14979 4719
+#  0 0 0 0 0 0 0 0 0 0
+#  0 0 0 0 0 0 0 0 0 0
+#  0 0 0 0 0 0 0 0 0 0
+#  0 0 0 0 0 0 0 0 0 0
+#  0 0 0 0 0 0 0 0 0 0
+#  0 0 0 0 0 0 0 0 0 0
+#  0 0 0 0 0 0 0 0 0 0
+#  0 0 0 0 0 0 0 0 0 0
+#  0 0 0 0 0 0 0 0 0 0
+#  0 0 0 0 0 0 0 0 0 0
+#  0 0 0 0 0 0 0 0 0 0
+#  0 0 0 0 0 0 0 0 0 0
+#  0 0 0 0 0 0 0 0 0 0
+#  0 0 0 0 0 0 0 0 0 0
+#  0 0 0 0 0 0 0 0 0 0
+# usp_MinVel= 5000
+# usp_MaxVel= 5000
+# usp_HlhByt= 4
+# axis=  t  x  y
+# io_rank= 2
+n1=321
+o1=0
+d1=0.001
+label1=sec
+# sort.t= ?
+n2=1761
+o2=0.
+d2=12.5
+label2=feet
+# sort.x= TrcNum
+n3=1
+o3=0.
+d3=1.
+label3=?
+# sort.y= RecNum
+# dds_history_end= tmpDict_in1:
+# $old_format=format
+# $format= out_format
+in=./data/s.velmodel.d.fcube
+# remote_path= rmtio://ttsjad49./data
+# 
+# fmt:FCUBE_TRACE= typedef struct {SAMPLE_TYPE Samples[axis_size(1)];} 
+#    FCUBE_TRACE;
+# 
+# fmt:SEQUENCE= typedef FCUBE_TRACE SEQUENCE;
+# 
+# fmt:fcube=   typedef FCUBE_TRACE SEQUENCE;
+# sort.x= ?
+# sort.y= ?
+title='s.velmodel.SEP'
+esize=4
+# Mon Jan 25 19:32:55 CST 1999
+d1=.0125
+o1=0.
+label1="z (km)"
+d2=.0125
+o2=0.
+label2="x (km)"
+d3=1
+o2=0.
+label3=" "
+title="Velocity Model"
+
+
+Window:   bob@kana   Tue May 23 12:11:29 2000
+		sepstr_ready_out() : sets next in="stdin"
+		In:	float	Fortran (321,1761,1,1)	C [1][1][1761][321]
+		Out:	float	Fortran (321,1761,1,1)	C [1][1][1761][321]
+	 From History:
+		 n4=1 n3=1 n2=1761 n1=321 esize=4
+	 From Par:
+		 n1=321  #f1=0  #j1=1  #min1=0.000000  #max1=4
+		 n2=1761  #f2=0  #j2=1  #min2=0.000000  #max2=22
+		 n3=1  #f3=0  #j3=1  #min3=0.000000  #max3=0
+		 n4=1  #f4=0  #j4=1  #min4=0  #max4=0
+	 Make header useful for further processing:
+		 n1=321 	 n2=1761 	 n3=1 	 n4=1
+		 o1=0.000000 	 o2=0.000000 	 o3=0.000000 	 o4=0.000000
+		 d1=0.0125 	 d2=0.0125 	 d3=1 	 d4=1
+		 label1="z (km)" 	 label2="x (km)" 	 label3=" " 	 label4=""
+		data_format="xdr_float"
+
+1.7-svn	sfdd	PaperResults/Madagascar/velocity_model:	mlai@begws92	Fri Feb 20 18:10:12 2015
+
+	data_format="native_float"
+	esize=4
+	in="stdout"
+	in="stdin"
+
+1.7-svn	sfscale	PaperResults/Madagascar/velocity_model:	mlai@begws92	Fri Feb 20 18:10:12 2015
+
+	data_format="native_float"
+	esize=4
+	in="stdout"
+	in="stdin"
+
+1.7-svn	sfput	PaperResults/Madagascar/velocity_model:	mlai@begws92	Fri Feb 20 18:10:12 2015
+
+	 title=Velocity Model
+	unit2=km
+	data_format="native_float"
+	in="/home/mlai/datapath/PaperResults/Madagascar/velocity_model/velmodel_dd_scale.rsf@"
+	label1=Depth
+	label2=Position
+	unit1=km
+1.7-svn	sfcp	PaperResults/Madagascar/velocity_model:	mlai@begws92	Fri Feb 20 18:10:49 2015
+
+	data_format="native_float"
+	esize=4
+	in="stdout"
+	in="stdin"
+
+1.7-svn	sfmath	Rickett2003/PaperResults/run1:	mlai@begws92	Fri Feb 20 18:20:46 2015
+
+	x2=2
+	input=0
+	data_format="native_float"
+	esize=4
+	in="stdout"
+	x1=1
+	in="stdin"
+
+1.7-svn	sfput	Rickett2003/PaperResults/run1:	mlai@begws92	Fri Feb 20 18:20:46 2015
+
+	in="/home/mlai/datapath/vel1.rsf@"
+	d2=12.5
+	data_format="native_float"
+	unit1=m
+	unit2=m
+	d1=12.5

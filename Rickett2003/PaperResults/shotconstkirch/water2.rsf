@@ -1,0 +1,15 @@
+1.7-svn	sfspike	Rickett2003/PaperResults/shotconstkirch:	mlai@begws92	Fri Feb 20 07:50:19 2015
+
+	d2=0.01
+	o1=0
+	n2=301
+	o2=0
+	label1="Time"
+	data_format="native_float"
+	label2="Distance"
+	esize=4
+	in="/home/mlai/datapath/Rickett2003/PaperResults/shotconstkirch/water2.rsf@"
+	unit1="s"
+	unit2="km"
+	d1=0.01
+	n1=201

@@ -1,0 +1,24 @@
+1.7-svn	python	www/rsf/04012015_080132:	mlai@begws92	Wed Apr  1 10:04:34 2015
+
+	n2=81
+	data_format="native_float"
+	esize=4
+	in="/home/mlai/datapath/pythony0UpxQ"
+	n1=2000
+1.7-svn	sfcp	www/rsf/04012015_080132:	mlai@begws92	Wed Apr  1 10:05:12 2015
+
+	data_format="native_float"
+	esize=4
+	in="/home/mlai/datapath/processed_data_by_trace_time.rsf@"
+1.7-svn	sfput	median_balance/paper/make_figure:	mlai@begws92	Wed Apr  1 12:45:53 2015
+
+	unit2=km
+	d2=0.05
+	label1=Time
+	label2=Offset
+	data_format="native_float"
+	o1=0.002
+	in="/home/mlai/datapath/median_balance/paper/make_figure/individual_gain_data_by_trace_time_with_header.rsf@"
+	o2=-2
+	unit1=s
+	d1=0.002

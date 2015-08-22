@@ -1,0 +1,40 @@
+from rsf.proj import *
+import subprocess
+import debug_module
+
+debug_module.doDebugOrNot(ARGUMENTS)
+
+file_to_fetch = "velmodel.hh"
+directory_to_fetch_from = "Amoco"
+flow_parameters = dict(rscale=64)
+result_parameters = dict(bias=1.9,
+                         screenwd=18)
+
+
+position_min_km = 11;
+
+
+            # Fetch Files from repository
+Fetch(file_to_fetch,directory_to_fetch_from)
+
+
+
+
+                # Convert Files to RSF
+Flow('velmodel','velmodel.hh', '''dd form=native | scale rscale=%(rscale)d | put
+    unit1=km unit2=km label1=Depth\ Z label2=Position title=Velocity\ Model
+    ''' %flow_parameters)
+
+Result('velmodel',
+       '''
+       grey  scalebar=y barreverse=y
+       color=j allpos=y bias=%(bias)f
+       screenwd=%(screenwd)f 
+       barlabel=" " barunit=km/s
+       title="Amoco Velocity Model"
+       labelsz=4 titlesz=6
+       wheretitle=t
+       ''' % result_parameters)
+
+
+End()

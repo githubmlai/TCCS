@@ -1,0 +1,79 @@
+in=vel.asc n1=398 n2=161 data_format=ascii_float
+1.7-svn	sfdd	Rickett2003/PaperResults/test:	mlai@begws92	Fri Feb 20 17:57:57 2015
+
+	data_format="native_float"
+	esize=4
+	in="stdout"
+	in="stdin"
+
+1.7-svn	sfput	Rickett2003/PaperResults/test:	mlai@begws92	Fri Feb 20 17:57:57 2015
+
+	in="stdout"
+	o1=0
+	d2=12.5
+	o2=0
+	data_format="native_float"
+	d1=12.5
+	in="stdin"
+
+1.7-svn	sftransp	Rickett2003/PaperResults/test:	mlai@begws92	Fri Feb 20 17:57:57 2015
+
+	o1=0
+	d2=12.5
+	n2=398
+	o2=0
+	data_format="native_float"
+	esize=4
+	in="stdout"
+	d1=12.5
+	n1=161
+	in="stdin"
+
+1.7-svn	sfexpand	Rickett2003/PaperResults/test:	mlai@begws92	Fri Feb 20 17:57:57 2015
+
+	d2=12.5
+	n2=398
+	data_format="native_float"
+	esize=4
+	in="/home/mlai/datapath/Rickett2003/PaperResults/test/vel.rsf@"
+	d1=12.5
+	n1=191
+1.7-svn	sfdepth2time	Rickett2003/PaperResults/test:	mlai@begws92	Fri Feb 20 17:57:57 2015
+
+	o1=0
+	data_format="native_float"
+	esize=4
+	in="stdout"
+	d1=0.004
+	n1=2000
+	in="stdin"
+
+1.7-svn	sfai2refl	Rickett2003/PaperResults/test:	mlai@begws92	Fri Feb 20 17:57:57 2015
+
+	data_format="native_float"
+	esize=4
+	in="stdout"
+	in="stdin"
+
+1.7-svn	sfricker1	Rickett2003/PaperResults/test:	mlai@begws92	Fri Feb 20 17:57:57 2015
+
+	data_format="native_float"
+	esize=4
+	in="stdout"
+	in="stdin"
+
+1.7-svn	sfenvelope	Rickett2003/PaperResults/test:	mlai@begws92	Fri Feb 20 17:57:57 2015
+
+	data_format="native_float"
+	esize=4
+	in="stdout"
+	in="stdin"
+
+1.7-svn	sftime2depth	Rickett2003/PaperResults/test:	mlai@begws92	Fri Feb 20 17:57:57 2015
+
+	o1=0
+	data_format="native_float"
+	esize=4
+	in="/home/mlai/datapath/Rickett2003/PaperResults/test/iref.rsf@"
+	d1=12.5
+	n1=191

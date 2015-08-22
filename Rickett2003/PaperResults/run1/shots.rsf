@@ -1,0 +1,20 @@
+1.7-svn	sfmpirtmop	Rickett2003/PaperResults/run1:	mlai@begws92	Fri Feb 20 18:45:17 2015
+
+	d2=37.5
+	n2=587
+	o1=0
+	d3=975
+	n3=1
+	o2=0
+	label1="Time"
+	data_format="native_complex"
+	o3=7500
+	label2="Position"
+	label3="Position"
+	esize=8
+	in="/home/mlai/datapath/Rickett2003/PaperResults/run1/shots.rsf@"
+	unit1="s"
+	unit2="m"
+	unit3="m"
+	d1=0.002
+	n1=2001

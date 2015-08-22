@@ -1,0 +1,45 @@
+1.7-svn	sfspike	Rickett2003/PaperResults/test:	mlai@begws92	Fri Feb 20 17:58:02 2015
+
+	o1=0
+	label1="Time"
+	data_format="native_float"
+	esize=4
+	in="stdout"
+	unit1="s"
+	d1=0.0001
+	n1=30001
+	in="stdin"
+
+1.7-svn	sfricker1	Rickett2003/PaperResults/test:	mlai@begws92	Fri Feb 20 17:58:02 2015
+
+	data_format="native_float"
+	esize=4
+	in="/home/mlai/datapath/Rickett2003/PaperResults/test/source1.rsf@"
+1.7-svn	sfenvelope	Rickett2003/PaperResults/test:	mlai@begws92	Fri Feb 20 17:58:02 2015
+
+	data_format="native_float"
+	esize=4
+	in="stdout"
+	in="stdin"
+
+1.7-svn	sfhalfint	Rickett2003/PaperResults/test:	mlai@begws92	Fri Feb 20 17:58:02 2015
+
+	data_format="native_float"
+	esize=4
+	in="stdout"
+	in="stdin"
+
+1.7-svn	sfhalfint	Rickett2003/PaperResults/test:	mlai@begws92	Fri Feb 20 17:58:02 2015
+
+	data_format="native_float"
+	esize=4
+	in="stdout"
+	in="stdin"
+
+1.7-svn	sfmath	Rickett2003/PaperResults/test:	mlai@begws92	Fri Feb 20 17:58:02 2015
+
+	input=0
+	data_format="native_float"
+	esize=4
+	in="/home/mlai/datapath/Rickett2003/PaperResults/test/imagsrc.rsf@"
+	x1=1

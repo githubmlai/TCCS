@@ -1,0 +1,312 @@
+from rsf.proj import *
+from rsf.recipes import fdmod
+# try recipe here /home/mlai/RSFSRC/book/swag/tau/marm
+
+
+            #these values are fixed since we are downloading specific files  
+            #from a web diretory
+velocity_model_raw_file = "velmodel.hh"
+directory_to_download_from = "Amoco"
+
+            ############################
+            ###user chosen parameters###
+            ############################
+velocity_model_file_name = "velocity_model"
+data_conversion_parameters = dict(form = 'native',
+                                  rscale = 0.001,
+                                  unit1 = 'km',
+                                  unit2 = 'km',
+                                  label1 = 'z',
+                                  label2 = 'x')
+velocity_model_image_parameters = dict(scalebar = 'y', 
+                                       barreverse = 'y',
+                                       color = 'j', 
+                                       gainpanel = 'a', 
+                                       allpos = 'y', 
+                                       bias = 1.9,
+                                       screenwd = 15, 
+                                       screenht = 7,
+                                       barunit = 'km/s', 
+                                       wanttitle = 'n',
+                                       labelsz = 4)
+source_coordinate_z_x_r = (0.01,
+                           18.2, #see caption of Fig 2 in Rickett 2003
+                           1);
+data_cube_setup_parameters = dict( nt = 5000, 
+                                   dt = 0.001,
+                                   ot = 0,   
+                                   lt = 't',
+                                   ut = 's',
+                                   kt = 100,    # wavelet delay
+                                   nx = 1761, 
+                                   ox = 0,  
+                                   dx = 0.0125 ,
+                                   lx = 'x',
+                                   ux = 'km',
+                                   nz = 321, 
+                                   oz = 0,   
+                                   dz = 0.0125 ,
+                                   lz = 'z',
+                                   uz = 'km',
+                                   source_coordinate_z = source_coordinate_z_x_r[0],
+                                   source_coordinate_x = source_coordinate_z_x_r[1],
+                                   source_coordinate_r = source_coordinate_z_x_r[2],
+                                   x_max = source_coordinate_z_x_r[1] + 2)
+
+wavelet_file_name = "wavelet"
+finite_difference_modeling_parameters = \
+        dict( num_time_sample = data_cube_setup_parameters['nt'], 
+              delta_time_sample = data_cube_setup_parameters['dt'],
+              offset_time_sample = data_cube_setup_parameters['ot'],   
+              label_time = data_cube_setup_parameters['lt'],
+              unit_time = data_cube_setup_parameters['ut'],
+              wavelet_delay = data_cube_setup_parameters['kt'],  # wavelet delay
+              num_x_sample = data_cube_setup_parameters['nx'],
+              delta_x_sample = data_cube_setup_parameters['dx'] ,
+              offset_x_sample = data_cube_setup_parameters['ox'],
+              label_x = data_cube_setup_parameters['lx'],
+              unit_x = data_cube_setup_parameters['ux'],
+              num_z_sample = data_cube_setup_parameters['nz'],
+              delta_z_sample = data_cube_setup_parameters['dz'],
+              offset_z_sample = data_cube_setup_parameters['oz'],
+              label_z = data_cube_setup_parameters['lz'],
+              unit_z = data_cube_setup_parameters['uz'],
+              peak_frequency_in_hz = 15,
+              num_spike = 1,
+              spike_magnitude = 1,
+              max_dimension_to_search_for_scaling_maximum_value = 123, # Scale by maximum in the dimensions up to this axis 
+              num_time_sample_windowed = 200)
+list_x_position_with_zero_value = 'list_x_position_with_zero_value'
+scalar_with_zero_value = 'scalar_with_zero_value'
+list_x_position_with_constant_value = 'list_x_position_with_constant_value'
+list_x_position_with_position_value = 'list_x_position_with_position_value'
+coordinate_by_source_dimension = 'coordinate_by_source_dimension'
+source_x = 'source_x'
+source_z = 'source_z'
+source_r = 'source_r'
+coordinate_by_receiver_dimension ='coordinate_by_receiver_dimension'
+velocity_model_header_update ='velocity_model_header_update'
+density_file_name = 'density_file_name'        
+recording_by_receiver_time = 'recording_by_receiver_time'
+wavefront_by_depth_offset_time = 'wavefront_by_depth_offset_time'
+recording_no_wavelet_delay_by_receiver_time = 'recording_no_wavelet_delay_by_receiver_time'
+
+
+        # Fetch Raw Files from repository
+Fetch( velocity_model_raw_file, directory_to_download_from )
+
+        # Convert Files to RSF
+Flow( velocity_model_file_name,
+      velocity_model_raw_file, 
+     '''dd form=%(form)s | 
+        scale rscale=%(rscale)g | 
+        put unit1=%(unit1)s 
+            unit2=%(unit2)s 
+            label1=%(label1)s 
+            label2=%(label2)s
+            title=''
+     ''' %data_conversion_parameters )
+
+        # Make image of velocity model
+Result(velocity_model_file_name,
+       velocity_model_file_name,
+       '''grey scalebar=%(scalebar)s 
+               barreverse=%(barreverse)s
+               color=%(color)s
+               gainpanel=%(gainpanel)s
+               allpos=%(allpos)s
+               bias=%(bias)g
+               screenwd=%(screenwd)g 
+               screenht=%(screenht)g
+               barunit=%(barunit)s 
+               wanttitle=%(wanttitle)s
+               labelsz=%(labelsz)g
+       ''' %velocity_model_image_parameters)
+
+        # add F-D modeling parameters
+fdmod.param(data_cube_setup_parameters)
+
+        # build wavelet
+Flow(wavelet_file_name,
+     None,
+     ''' spike nsp=%(num_spike)d
+               mag=%(spike_magnitude)g
+               n1=%(num_time_sample)d 
+               d1=%(delta_time_sample)g 
+               o1=%(offset_time_sample)g 
+               k1=%(wavelet_delay)d |
+          ricker1 frequency=%(peak_frequency_in_hz)g | 
+          scale axis=%(max_dimension_to_search_for_scaling_maximum_value)d |
+          put label1=%(label_time)s 
+              label2=%(label_x)s | 
+          transp
+     ''' % finite_difference_modeling_parameters)
+
+Result(wavelet_file_name,
+       '''window | 
+          window n1=%(num_time_sample_windowed)d | 
+          graph title="" 
+                label1=%(label_time)s 
+        ''' % finite_difference_modeling_parameters)
+
+       # ---------------- #
+       # experiment setup #
+       # ---------------- #
+Flow(list_x_position_with_zero_value,
+     None,
+     ''' math n1=%(num_x_sample)d 
+              d1=%(delta_x_sample)g 
+              o1=%(offset_x_sample)g 
+              output=0
+     ''' % finite_difference_modeling_parameters)
+Flow(scalar_with_zero_value,
+     None,
+     '''math n1=1      
+             d1=0      
+             o1=0      
+             output=0
+    ''')
+
+        #generate receiver coordinates
+Flow(list_x_position_with_constant_value,
+     list_x_position_with_zero_value,
+     '''math output=.025
+     ''')
+Flow(list_x_position_with_position_value,
+     list_x_position_with_zero_value,
+     '''math output="x1"
+     ''')
+Flow(coordinate_by_receiver_dimension,
+     [list_x_position_with_position_value,list_x_position_with_constant_value],
+     '''cat axis=2 
+            space=n
+            ${SOURCES[0]} ${SOURCES[1]} | 
+        transp
+     ''', 
+     stdin=0)
+Plot(coordinate_by_receiver_dimension,
+     fdmod.rrplot('',data_cube_setup_parameters))
+
+        # generate source positions
+Flow(source_z,
+     scalar_with_zero_value,
+     'math output=%g' % source_coordinate_z_x_r[0])
+Flow(source_x,
+     scalar_with_zero_value,
+     'math output=%g' % source_coordinate_z_x_r[1])
+Flow(source_r,
+     scalar_with_zero_value,
+     'math output=%g' % source_coordinate_z_x_r[2])
+Flow(coordinate_by_source_dimension,
+     [source_x,source_z,source_r],
+     ''' cat axis=2 
+             space=n
+             ${SOURCES[0]} ${SOURCES[1]} ${SOURCES[2]} | 
+             transp
+     ''', 
+     stdin=0)
+Plot(coordinate_by_source_dimension,
+     fdmod.ssplot('',
+                  data_cube_setup_parameters)
+     )
+        
+Flow(velocity_model_header_update,
+     velocity_model_file_name, 
+      '''  put o1=%(offset_z_sample)g 
+               d1=%(delta_z_sample)g  
+               o2=%(offset_z_sample)g 
+               d2=%(delta_z_sample)g
+      ''' % finite_difference_modeling_parameters)
+Plot(velocity_model_header_update,fdmod.cgrey('''
+                          allpos=y
+                          bias=1.5 
+                          pclip=97
+                          title="Survey Design" 
+                          titlesz=6 
+                          labelsz=4 
+                          wheretitle=t''',
+                        data_cube_setup_parameters)
+     )
+Result(velocity_model_header_update,
+       [velocity_model_header_update,
+        coordinate_by_receiver_dimension,
+        coordinate_by_source_dimension
+       ],
+       'Overlay')
+
+        #build density 
+Flow(density_file_name,
+     velocity_model_header_update,
+     'math output=1')
+
+        # ------------------------------
+        # finite-differences modeling
+fdmod.awefd1(recording_by_receiver_time,
+             wavefront_by_depth_offset_time,
+             wavelet_file_name,
+             velocity_model_header_update,
+             density_file_name,
+             coordinate_by_source_dimension,
+             coordinate_by_receiver_dimension,
+             'free=y dens=y',
+             data_cube_setup_parameters)
+  
+Plot(wavefront_by_depth_offset_time,
+     fdmod.wgrey('pclip=99',
+                 data_cube_setup_parameters),
+     view=1)
+Result(recording_by_receiver_time,
+       'window j2=1 | \
+       transp |' + fdmod.dgrey('''
+                              pclip=99 
+                              title="Data Record"
+                              label2="Offset" 
+                              wheretitle=t 
+                              titlesz=6 
+                              labelsz=4''',
+                              data_cube_setup_parameters))
+ 
+list_of_time=['5','10','15','20']
+for time in list_of_time:
+    Result('time'+time,
+           wavefront_by_depth_offset_time,
+            '''window f3=%s 
+                      n3=1 
+                      min1=0 
+                      min2=0 | 
+            grey gainpanel=a 
+                 pclip=99 
+                 wantframenum=y 
+                 title="Wavefield at %s ms" 
+                 labelsz=4
+                 label1=Depth 
+                 unit1=km 
+                 label2=Distance 
+                 unit2=km
+                 titlesz=6 
+                 screenratio=.18 
+                 screenht=2 
+                 wheretitle=t''' % (time,time))
+    
+            # undo wavelet delay
+            # f2=M (skip M time samples)
+Flow(recording_no_wavelet_delay_by_receiver_time,
+     recording_by_receiver_time,
+     '''window squeeze=n 
+               min1=%(source_coordinate_x)g
+               max1=%(x_max)g
+               f2=%(kt)d |
+        pad end2=%(kt)d |
+        put o2=%(ot)g
+     ''' % data_cube_setup_parameters)
+
+            # plot data
+            # --> In Plot() and Result(), if the source file is not specified, 
+            # it is assumed that the name of the output file 
+            # (without the .vpl suffix) is the same 
+            # as the name of the input file (without the .rsf suffix). 
+Result(recording_no_wavelet_delay_by_receiver_time,
+       'transp |'
+       + fdmod.dgrey('',data_cube_setup_parameters))
+
+End()
